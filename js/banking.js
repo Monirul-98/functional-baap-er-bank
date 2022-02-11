@@ -5,17 +5,17 @@ function getInput(inputId) {
   inputValue.value = "";
   return inputAmount;
 }
+function addingTotal(totalInputId, amount) {
+  const totalInput = document.getElementById(totalInputId);
+  const previousTotalInputText = totalInput.innerText;
+  const previousTotalInput = parseFloat(previousTotalInputText);
+  totalInput.innerText = amount + previousTotalInput;
+}
 
 document.getElementById("diposit-btn").addEventListener("click", function () {
-  /* const dipositInput = document.getElementById("deposit-input");
-  const newDepositAmount = dipositInput.value; */
   const newDepositAmount = getInput("deposit-input");
 
-  const totalDeposit = document.getElementById("deposit-total");
-  const previousDepositText = totalDeposit.innerText;
-  const previousDeposit = parseFloat(previousDepositText);
-  const totalDepositAmount = newDepositAmount + previousDeposit;
-  totalDeposit.innerText = totalDepositAmount;
+  addingTotal("deposit-total", newDepositAmount);
 
   const balanceTotal = document.getElementById("balance-total");
   const previousBalanceText = balanceTotal.innerText;
@@ -25,16 +25,9 @@ document.getElementById("diposit-btn").addEventListener("click", function () {
 });
 
 document.getElementById("withdraw-btn").addEventListener("click", function () {
-  /*  const withdrawInput = document.getElementById("withdraw-input");
-  const newWithdrawText = withdrawInput.value;
-  const newWithdraw = parseFloat(newWithdrawText); */
   const newWithdraw = getInput("withdraw-input");
 
-  const withdrawtotal = document.getElementById("withdraw-total");
-  const previousWithdrawText = withdrawtotal.innerText;
-  const previousWithdraw = parseFloat(previousWithdrawText);
-  const totalWithdrawAmount = newWithdraw + previousWithdraw;
-  withdrawtotal.innerText = totalWithdrawAmount;
+  addingTotal("withdraw-total", newWithdraw);
 
   const totalBalance = document.getElementById("balance-total");
   const preBalanceText = totalBalance.innerText;
